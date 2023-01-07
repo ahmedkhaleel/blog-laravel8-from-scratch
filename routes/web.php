@@ -22,7 +22,11 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('posts/{post}', fn($id) => view('post',[
-    'post' => Post::findOrFail($id)
-]));
+Route::get('posts/{post}', static function (Post $post){
+    return view('post', [
+        'post' => $post
+    ]);
+}
+
+);
 

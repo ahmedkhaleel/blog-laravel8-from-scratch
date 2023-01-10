@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use App\Models\post;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +27,11 @@ Route::get('posts/{post}', static function (Post $post){
     return view('post', [
         'post' => $post
     ]);
-}
+});
 
-);
+Route::get('categories/{category:slug}', static function (Category $category){
+    return view('posts',[
+        'posts' => $category->posts
+    ]);
+});
 

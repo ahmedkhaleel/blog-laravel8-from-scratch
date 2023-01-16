@@ -18,18 +18,21 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 */
 
 Route::get('/', function () {
+
     return view('posts',[
-        'posts' => post::all()
+        'posts' => post::with('category')->get()
     ]);
 });
 
 Route::get('posts/{post}', static function (Post $post){
+
     return view('post', [
         'post' => $post
     ]);
 });
 
 Route::get('categories/{category:slug}', static function (Category $category){
+
     return view('posts',[
         'posts' => $category->posts
     ]);

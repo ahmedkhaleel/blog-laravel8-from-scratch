@@ -18,44 +18,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::truncate();
-        Category::truncate();
-        Post::truncate();
 
-        $user = User::factory()->create();
+        $user = User::factory()->create(
+            [
+                'name' => 'ahmed khaleel'
+            ]
+        );
 
-        $personal = Category::create([
-            'name' => 'Personal',
-            'slug' => 'personal'
-        ]);
-
-        $family = Category::create([
-            'name' => 'Family',
-            'slug' => 'family'
-        ]);
-
-        $work = Category::create([
-            'name' => 'Work',
-            'slug' => 'work'
-        ]);
-
-        Post::create([
+        Post::factory(5)->create([
             'user_id' => $user->id,
-            'category_id' => $personal->id,
-            'title' => 'Lorem ipsum dolor sit amet',
-            'slug' => 'lorem-ipsum-dolor-sit-amet',
-            'excerpt' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-
-            'body' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
-        ]);
-        Post::create([
-            'user_id' => $user->id,
-            'category_id' => $work->id,
-            'title' => 'Lorem ipsum work sit amet',
-            'slug' => 'lorem-ipsum-work-sit-amet',
-            'excerpt' => 'Lorem ipsum work sit amet, consectetur adipiscing elit.',
-
-            'body' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>'
         ]);
 
 

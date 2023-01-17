@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    Protected $guarded = ['id'];
+//    Protected $guarded = ['id'];
+//    Protected $with = ['category', 'author'];
 //    protected $fillable = ['title', 'excerpt', 'body', 'id'];
 
     public function getRouteKeyName()
